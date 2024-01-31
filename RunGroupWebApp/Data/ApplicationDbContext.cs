@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RunGroupWebApp.Models;
 
 namespace RunGroupWebApp.Data
 {
@@ -8,5 +9,9 @@ namespace RunGroupWebApp.Data
         {
             
         }
+        public DbSet<Race> Races { get; set; }
+        public DbSet<Club> Clubs { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
     }
 }

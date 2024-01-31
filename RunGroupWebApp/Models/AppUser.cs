@@ -1,6 +1,8 @@
-﻿namespace RunGroupWebApp.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace RunGroupWebApp.Models
 {
-    public class AppUser 
+    public class AppUser : IdentityUser
     {
         public int Pace { get; set; }
         public int Mileage { get; set; }
