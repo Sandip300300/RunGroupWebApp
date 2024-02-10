@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RunGroupWebApp.Data;
 
 namespace RunGroupWebApp.Controllers
@@ -15,6 +16,11 @@ namespace RunGroupWebApp.Controllers
         {
             var races = _context.Races.ToList();
             return View(races);
+        }
+        public IActionResult Details(int id)
+        {
+            var race = _context.Races.Include(a => a.Address).FirstOrDefault(a => a.Id == id);
+            return View(race);
         }
     }
 }
