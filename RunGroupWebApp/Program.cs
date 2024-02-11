@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
 using RunGroupWebApp.Data;
+using RunGroupWebApp.Interfaces;
+using RunGroupWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddTransient<ICLubRepository, ClubRepository>();
+builder.Services.AddTransient<IRaceRepository, RaceRepository>();
 var app = builder.Build();
 
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
